@@ -1,9 +1,15 @@
 <div class="main-div" >
-  <div class="orders">
-    <div class="order" *ngFor="let o of order">
-      <p>You ordered {{ o.title }} x1 costs {{o.price}}</p>
+  <div class="orders" id="orders">
+    <div *ngIf="totalPrice === 0">
+      <p> Please order some food from menu ! </p>
     </div>
-    <hr/>
+    <div *ngIf="totalPrice !== 0">
+      <div class="order" *ngFor="let o of order; let i = index" >
+        <span class="order-name">Name order:<strong> {{o.title}}</strong>  Price:<strong> {{o.price}}</strong> <button name="{{i}}" class="btn-del" type="submit" (click)="delOrder($event)"> del </button></span>
+      </div>
+      <hr/>
+      <p> Total price: <strong> {{totalPrice}}</strong> </p>
+    </div>
   </div>
   <div class="items">
     <div class="section" *ngFor="let item of items">
@@ -13,7 +19,7 @@
     </span>
         <span class="description">
       <h4>{{item.name}}</h4>
-      <p>Price: {{item.price}}</p>
+          <p>Price:<strong> {{item.price}}</strong> KGS</p>
     </span>
         <button type="submit" (click)="getOrder($event)" name="{{item.name}}">
           add
