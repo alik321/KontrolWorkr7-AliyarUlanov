@@ -5,7 +5,7 @@
     </div>
     <div *ngIf="totalPrice !== 0">
       <div class="order" *ngFor="let o of order; let i = index" >
-        <span class="order-name">Name order:<strong> {{o.title}}</strong>  Price:<strong> {{o.price}}</strong> <button name="{{i}}" class="btn-del" type="submit" (click)="delOrder($event)"> del </button></span>
+        <span class="order-name" *ngIf="i > 0">Name order:<strong> {{o.title}}</strong>  Price:<strong> {{o.price}}</strong> <button name="{{i}}" class="btn-del" type="submit" (click)="delOrder($event)"> del </button></span>
       </div>
       <hr/>
       <p> Total price: <strong> {{totalPrice}}</strong> </p>
